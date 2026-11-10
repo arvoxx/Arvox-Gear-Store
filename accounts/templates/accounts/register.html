@@ -1,0 +1,240 @@
+{% load static %}
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#080c14">
+    <meta name="description" content="به ArvoxGear بپیوند و تجهیزات گیمینگ مورد علاقه‌ات را پیدا کن.">
+    <title>ساخت حساب کاربری | ArvoxGear</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'accounts/css/register.css' %}">
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js"
+            }
+        }
+    </script>
+</head>
+<body class="register-page">
+    <a class="skip-link" href="#registration-form">رفتن به فرم ثبت‌نام</a>
+
+    <main class="register-shell">
+        <div class="register-row">
+            <!-- پنل برند و نمایش سه‌بعدی سخت‌افزار -->
+            <section class="visual-panel" aria-labelledby="hero-title">
+                <div class="visual-panel__background" aria-hidden="true">
+                    <div class="ambient ambient--cyan"></div>
+                    <div class="ambient ambient--purple"></div>
+                    <div class="background-grid"></div>
+                    <div class="background-vignette"></div>
+                </div>
+
+                <div class="visual-panel__content">
+                    <header class="brand-header">
+                        <a class="brand-lockup" href="/" aria-label="صفحه اصلی ArvoxGear">
+                            <span class="brand-symbol" aria-hidden="true">
+                                <i class="fa-solid fa-cube"></i>
+                            </span>
+                            <span class="brand-name">ARVOX<span>GEAR</span></span>
+                        </a>
+                        <span class="brand-header__edition"><i></i> نسل تازهٔ سخت‌افزار</span>
+                    </header>
+
+                    <div class="hero-copy">
+                        <p class="hero-kicker"><span></span> برای ساختن یک تجربهٔ متفاوت</p>
+                        <h1 id="hero-title">قدرت واقعی سیستم تو، <span>از اینجا شروع می‌شه.</span></h1>
+                        <p class="hero-description">از قطعات حرفه‌ای تا تجهیزات گیمینگ؛ انتخاب بعدی تو اینجاست. به دنیای ArvoxGear خوش اومدی.</p>
+                    </div>
+
+                    <div class="hardware-stage" aria-label="نمای سه‌بعدی کارت گرافیک مفهومی ArvoxGear">
+                        <div class="gpu-fallback" aria-hidden="true">
+                            <div class="gpu-fallback__card">
+                                <span class="gpu-fallback__rail"></span>
+                                <div class="gpu-fallback__fans">
+                                    <span class="gpu-fallback__fan"><i></i></span>
+                                    <span class="gpu-fallback__fan"><i></i></span>
+                                    <span class="gpu-fallback__fan"><i></i></span>
+                                </div>
+                                <span class="gpu-fallback__brand">ARVOX / GEAR</span>
+                            </div>
+                        </div>
+                        <canvas id="gear-scene" class="gear-scene" aria-hidden="true"></canvas>
+                        <div class="hardware-stage__topline" aria-hidden="true">
+                            <span class="stage-label"><i class="fa-solid fa-microchip"></i> HARDWARE / SERIES 01</span>
+                            <span class="stage-status"><b></b> PERFORMANCE MODE</span>
+                        </div>
+                        <div class="hardware-callout hardware-callout--left" aria-hidden="true">
+                            <span class="callout-index">01</span>
+                            <span>مهندسی دقیق<br><strong>برای عملکرد بالا</strong></span>
+                        </div>
+                        <div class="hardware-callout hardware-callout--right" aria-hidden="true">
+                            <span class="callout-index callout-index--purple">02</span>
+                            <span>جزئیات پریمیوم<br><strong>بدون مصالحه</strong></span>
+                        </div>
+                        <div class="hardware-stage__glow" aria-hidden="true"></div>
+                    </div>
+
+                    <div class="visual-bottom">
+                        <div class="visual-benefits">
+                            <div class="benefit-item">
+                                <span class="benefit-icon"><i class="fa-solid fa-bolt"></i></span>
+                                <span><strong>انتخاب هوشمند</strong><small>قطعات متناسب با نیاز تو</small></span>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="benefit-icon benefit-icon--purple"><i class="fa-solid fa-crosshairs"></i></span>
+                                <span><strong>تمرکز روی کیفیت</strong><small>تجربه‌ای فراتر از معمول</small></span>
+                            </div>
+                        </div>
+                        <div class="visual-footer">
+                            <span>BUILT FOR YOUR NEXT LEVEL</span>
+                            <span dir="ltr">AG<span> / </span>2026</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- فرم واقعی ثبت‌نام Django -->
+            <section class="form-panel" aria-labelledby="form-title">
+                <div class="form-panel__ambient" aria-hidden="true"></div>
+                <div class="form-panel__inner">
+                    <div class="mobile-brand-lockup" aria-label="ArvoxGear">
+                        <span class="brand-symbol" aria-hidden="true"><i class="fa-solid fa-cube"></i></span>
+                        <span class="brand-name">ARVOX<span>GEAR</span></span>
+                    </div>
+
+                    <div class="form-topline">
+                        <span class="form-topline__label"><i class="fa-solid fa-user-plus"></i> حساب کاربری جدید</span>
+                        <span class="form-topline__step" dir="ltr">JOIN / 01</span>
+                    </div>
+
+                    <div class="form-heading">
+                        <h2 id="form-title">به جمع ما <span>بپیوند.</span></h2>
+                        <p>چند قدم کوتاه تا ورود به دنیای تجهیزات حرفه‌ای فاصله داری.</p>
+                    </div>
+
+                    {% if form.non_field_errors %}
+                        <div class="form-alert" role="alert" aria-live="polite">
+                            <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+                            <div>
+                                {% for error in form.non_field_errors %}<p>{{ error }}</p>{% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <form id="registration-form" class="registration-form" method="POST" novalidate>
+                        {% csrf_token %}
+
+                        <div class="form-grid">
+                            <div class="field-group field-group--full {% if form.username.errors %}has-error{% endif %}">
+                                <label class="field-label" for="{{ form.username.id_for_label }}">نام کاربری{% if form.username.field.required %}<span class="required-mark">*</span>{% endif %}</label>
+                                <div class="field-control">
+                                    <i class="field-icon fa-regular fa-user" aria-hidden="true"></i>
+                                    {{ form.username }}
+                                    <span class="field-focus-line" aria-hidden="true"></span>
+                                </div>
+                                {% for error in form.username.errors %}<p class="field-error"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>{{ error }}</p>{% endfor %}
+                            </div>
+
+                            <div class="field-group {% if form.first_name.errors %}has-error{% endif %}">
+                                <label class="field-label" for="{{ form.first_name.id_for_label }}">نام{% if form.first_name.field.required %}<span class="required-mark">*</span>{% endif %}</label>
+                                <div class="field-control">
+                                    <i class="field-icon fa-regular fa-id-card" aria-hidden="true"></i>
+                                    {{ form.first_name }}
+                                    <span class="field-focus-line" aria-hidden="true"></span>
+                                </div>
+                                {% for error in form.first_name.errors %}<p class="field-error"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>{{ error }}</p>{% endfor %}
+                            </div>
+
+                            <div class="field-group {% if form.last_name.errors %}has-error{% endif %}">
+                                <label class="field-label" for="{{ form.last_name.id_for_label }}">نام خانوادگی{% if form.last_name.field.required %}<span class="required-mark">*</span>{% endif %}</label>
+                                <div class="field-control">
+                                    <i class="field-icon fa-regular fa-id-card" aria-hidden="true"></i>
+                                    {{ form.last_name }}
+                                    <span class="field-focus-line" aria-hidden="true"></span>
+                                </div>
+                                {% for error in form.last_name.errors %}<p class="field-error"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>{{ error }}</p>{% endfor %}
+                            </div>
+
+                            <div class="field-group {% if form.email.errors %}has-error{% endif %}">
+                                <label class="field-label" for="{{ form.email.id_for_label }}">آدرس ایمیل{% if form.email.field.required %}<span class="required-mark">*</span>{% endif %}</label>
+                                <div class="field-control">
+                                    <i class="field-icon fa-regular fa-envelope" aria-hidden="true"></i>
+                                    {{ form.email }}
+                                    <span class="field-focus-line" aria-hidden="true"></span>
+                                </div>
+                                {% for error in form.email.errors %}<p class="field-error"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>{{ error }}</p>{% endfor %}
+                            </div>
+
+                            <div class="field-group {% if form.phonenumber.errors %}has-error{% endif %}">
+                                <label class="field-label" for="{{ form.phonenumber.id_for_label }}">شماره تماس{% if form.phonenumber.field.required %}<span class="required-mark">*</span>{% endif %}</label>
+                                <div class="field-control">
+                                    <i class="field-icon fa-solid fa-mobile-screen-button" aria-hidden="true"></i>
+                                    {{ form.phonenumber }}
+                                    <span class="field-focus-line" aria-hidden="true"></span>
+                                </div>
+                                {% for error in form.phonenumber.errors %}<p class="field-error"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>{{ error }}</p>{% endfor %}
+                            </div>
+
+                            <div class="field-group {% if form.password1.errors %}has-error{% endif %}">
+                                <label class="field-label" for="{{ form.password1.id_for_label }}">رمز عبور{% if form.password1.field.required %}<span class="required-mark">*</span>{% endif %}</label>
+                                <div class="field-control field-control--password">
+                                    <i class="field-icon fa-solid fa-lock" aria-hidden="true"></i>
+                                    {{ form.password1 }}
+                                    <button class="password-toggle" type="button" data-password-toggle="{{ form.password1.id_for_label }}" aria-label="نمایش رمز عبور" aria-pressed="false"><i class="fa-regular fa-eye" aria-hidden="true"></i></button>
+                                    <span class="field-focus-line" aria-hidden="true"></span>
+                                </div>
+                                <div class="password-strength" aria-live="polite">
+                                    <div class="password-strength__track"><span id="strength-meter"></span></div>
+                                    <span id="strength-label">قدرت رمز عبور</span>
+                                </div>
+                                {% for error in form.password1.errors %}<p class="field-error"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>{{ error }}</p>{% endfor %}
+                            </div>
+
+                            <div class="field-group {% if form.password2.errors %}has-error{% endif %}">
+                                <label class="field-label" for="{{ form.password2.id_for_label }}">تکرار رمز عبور{% if form.password2.field.required %}<span class="required-mark">*</span>{% endif %}</label>
+                                <div class="field-control field-control--password" id="confirm-password-control">
+                                    <i class="field-icon fa-solid fa-shield-halved" aria-hidden="true"></i>
+                                    {{ form.password2 }}
+                                    <button class="password-toggle" type="button" data-password-toggle="{{ form.password2.id_for_label }}" aria-label="نمایش رمز عبور" aria-pressed="false"><i class="fa-regular fa-eye" aria-hidden="true"></i></button>
+                                    <span class="field-focus-line" aria-hidden="true"></span>
+                                </div>
+                                <p class="field-hint" id="password-match-message" aria-live="polite">رمز عبورت را برای تأیید دوباره وارد کن.</p>
+                                {% for error in form.password2.errors %}<p class="field-error"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>{{ error }}</p>{% endfor %}
+                            </div>
+                        </div>
+
+                        <p class="terms-copy">با ساخت حساب، شرایط استفاده و سیاست حفظ حریم خصوصی آرواکس‌گیر را می‌پذیری.</p>
+
+                        <button class="submit-button" id="register-submit" type="submit">
+                            <span class="submit-button__label">ساخت حساب کاربری</span>
+                            <span class="submit-button__icon" aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
+                            <span class="submit-button__loader" aria-hidden="true"></span>
+                        </button>
+
+                        <p class="login-prompt">قبلاً حساب ساخته‌ای؟ <a href="/accounts/login/">وارد حساب شو <i class="fa-solid fa-arrow-up-left-from-square" aria-hidden="true"></i></a></p>
+                    </form>
+
+                    <div class="form-security-note">
+                        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                        <span>اطلاعاتت فقط برای ساخت و مدیریت حساب کاربری استفاده می‌شود.</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" defer></script>
+    <script src="{% static 'accounts/js/register.js' %}" defer></script>
+    <script src="{% static 'accounts/js/animations.js' %}" defer></script>
+    <script type="module" src="{% static 'accounts/js/three-background.js' %}"></script>
+</body>
+</html>
