@@ -1,0 +1,228 @@
+{% load static %}
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#070912">
+    <meta name="description" content="ArvoxGear؛ مقصد حرفه‌ای قطعات کامپیوتر، سخت‌افزار و تجهیزات گیمینگ.">
+    <title>ArvoxGear | فراتر از عملکرد</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'storefront/css/home.css' %}">
+</head>
+<body>
+    <div class="ambient ambient--cyan" aria-hidden="true"></div>
+    <div class="ambient ambient--purple" aria-hidden="true"></div>
+
+    <div class="announcement-bar">
+        <div class="container announcement-inner">
+            <span><i data-lucide="sparkles"></i> دنیای سخت‌افزار، یک قدم جلوتر از همیشه</span>
+            <span class="announcement-note">تجربه خرید متفاوت برای عاشقان تکنولوژی</span>
+        </div>
+    </div>
+
+    <header class="site-header" id="top">
+        <div class="container header-inner">
+            <a class="brand" href="#top" aria-label="ArvoxGear - صفحه اصلی">
+                <span class="brand-symbol"><i data-lucide="hexagon"></i><b>A</b></span>
+                <span class="brand-wordmark">Arvox<span>Gear</span><small>BUILD. PLAY. UPGRADE.</small></span>
+            </a>
+
+            <button class="mobile-menu-toggle icon-button" type="button" aria-label="باز کردن منو" aria-expanded="false" aria-controls="main-navigation">
+                <i data-lucide="menu"></i>
+            </button>
+
+            <nav class="main-navigation" id="main-navigation" aria-label="ناوبری اصلی">
+                <a class="nav-link active" href="#top">صفحه اصلی</a>
+                <a class="nav-link" href="#products">محصولات</a>
+                <a class="nav-link" href="#categories">دسته‌بندی‌ها</a>
+                <a class="nav-link" href="#promotions">پیشنهادهای ویژه</a>
+                <a class="nav-link" href="#about">چرا ArvoxGear؟</a>
+                <a class="nav-link" href="#builder">PC Builder</a>
+                <a class="nav-link" href="#footer">ارتباط با ما</a>
+            </nav>
+
+            <div class="header-actions auth-actions">
+                {% if request.user.is_authenticated %}
+                    <a class="account-link" href="#footer"><i data-lucide="user-round"></i><span>{{ request.user.first_name|default:request.user.username }}</span></a>
+                {% else %}
+                    <a class="auth-button auth-button--login" href="{% url 'accounts:login' %}">
+                        <i data-lucide="log-in" aria-hidden="true"></i>
+                        <span>ورود</span>
+                    </a>
+                    <a class="auth-button auth-button--register" href="{% url 'accounts:register' %}">
+                        <i data-lucide="user-plus" aria-hidden="true"></i>
+                        <span>ثبت‌نام</span>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <main id="storefront-root" data-static-root="{% static 'storefront/' %}">
+        <section class="hero-section section-shell" aria-labelledby="hero-title">
+            <div class="container hero-grid">
+                <div class="hero-copy reveal">
+                    <div class="eyebrow"><span class="eyebrow-line"></span> BEYOND PERFORMANCE <span class="eyebrow-pulse"></span></div>
+                    <h1 id="hero-title">قدرت را فراتر از <span>محدودیت</span> تجربه کن!</h1>
+                    <p>به دنیای تجهیزات حرفه‌ای گیمینگ و سخت‌افزار کامپیوتر خوش آمدی. بهترین قطعات را برای ساخت سیستم ایده‌آلت در ArvoxGear کشف کن.</p>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="#categories">مشاهده دسته‌بندی‌ها <i data-lucide="arrow-up-left"></i></a>
+                        <a class="button button-ghost" href="#about">کشف دنیای ArvoxGear <i data-lucide="play-circle"></i></a>
+                    </div>
+                    <div class="hero-meta">
+                        <span><i data-lucide="cpu"></i> PERFORMANCE FIRST</span>
+                        <span class="meta-divider"></span>
+                        <span><i data-lucide="zap"></i> BUILT FOR GAMERS</span>
+                    </div>
+                </div>
+                <div class="hero-visual reveal">
+                    <div class="hero-frame-glow"></div>
+                    <div class="hero-image-wrap">
+                        <img src="{% static 'storefront/images/hero/hero-gaming-setup.webp' %}" alt="سیستم گیمینگ حرفه‌ای با نورپردازی RGB و قطعات قدرتمند" fetchpriority="high" width="1200" height="526">
+                        <div class="hero-image-shade"></div>
+                        <div class="floating-spec spec-top"><span class="spec-dot"></span> RGB ECOSYSTEM <b>ON</b></div>
+                        <div class="floating-spec spec-bottom"><i data-lucide="activity"></i><span>POWER YOUR NEXT LEVEL</span></div>
+                    </div>
+                    <div class="hero-orbit hero-orbit--one"></div>
+                    <div class="hero-orbit hero-orbit--two"></div>
+                    <span class="hero-index">01 <i></i> 04</span>
+                </div>
+            </div>
+            <div class="hero-bottom-line" aria-hidden="true"><span></span></div>
+        </section>
+
+        <section class="benefits-section" aria-label="مزیت‌های خرید از ArvoxGear">
+            <div class="container benefits-grid">
+                <div class="benefit-item reveal"><span class="benefit-icon"><i data-lucide="badge-check"></i></span><div><strong>ضمانت اصالت کالا</strong><small>انتخاب مطمئن قطعات</small></div></div>
+                <div class="benefit-item reveal"><span class="benefit-icon"><i data-lucide="shield-check"></i></span><div><strong>پرداخت امن</strong><small>تجربه خرید آسوده</small></div></div>
+                <div class="benefit-item reveal"><span class="benefit-icon"><i data-lucide="truck"></i></span><div><strong>ارسال سریع</strong><small>در کوتاه‌ترین زمان</small></div></div>
+                <div class="benefit-item reveal"><span class="benefit-icon"><i data-lucide="headset"></i></span><div><strong>پشتیبانی تخصصی</strong><small>همراه انتخاب حرفه‌ای</small></div></div>
+            </div>
+        </section>
+
+        <section class="content-section categories-section" id="categories" aria-labelledby="categories-title">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <div><span class="section-kicker">EXPLORE THE HARDWARE</span><h2 id="categories-title">دنیای تجهیزات <span>ArvoxGear</span></h2><p>از قطعات اصلی سیستم تا لوازم جانبی؛ مسیرت را از دسته‌بندی موردعلاقه‌ات شروع کن.</p></div>
+                    <span class="section-heading-note">HARDWARE ECOSYSTEM <i data-lucide="boxes"></i></span>
+                </div>
+                <div class="category-grid" id="category-grid" aria-live="polite">
+                    <noscript><p class="catalog-fallback">برای نمایش دسته‌بندی‌ها، JavaScript مرورگر را فعال کن.</p></noscript>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="content-section products-section" id="products" aria-labelledby="products-title">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <div>
+                        <span class="section-kicker">CURATED GAMING HARDWARE</span>
+                        <h2 id="products-title">محصولات <span>منتخب</span></h2>
+                        <p>قطعاتی برای ساخت، ارتقا و تجربه یک سیستم گیمینگ قدرتمند.</p>
+                    </div>
+                    <span class="section-heading-note">ARVOXGEAR SELECTION <i data-lucide="cpu"></i></span>
+                </div>
+                <div class="products-toolbar reveal" role="group" aria-label="مرتب‌سازی محصولات">
+                    <span class="products-count" id="products-count">۵ محصول منتخب</span>
+                    <div class="product-sort-tabs">
+                        <button class="product-sort-tab is-active" type="button" data-product-sort="featured" aria-pressed="true">منتخب</button>
+                        <button class="product-sort-tab" type="button" data-product-sort="popular" aria-pressed="false">محبوب‌ترین</button>
+                        <button class="product-sort-tab" type="button" data-product-sort="newest" aria-pressed="false">جدیدترین</button>
+                    </div>
+                </div>
+                <div class="product-grid" id="product-grid" aria-live="polite">
+                    <noscript><p class="catalog-fallback">برای نمایش محصولات، JavaScript مرورگر را فعال کن.</p></noscript>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section promotions-section" id="promotions" aria-label="پیشنهادهای ویژه">
+            <div class="container promo-grid">
+                <a class="promo-banner promo-chair reveal" href="#categories" aria-label="مشاهده تجهیزات گیمینگ و صندلی">
+                    <img src="{% static 'storefront/images/banners/promo-gaming-chair.webp' %}" alt="بنر تصویری صندلی گیمینگ با نورپردازی بنفش" loading="lazy" width="1200" height="430">
+                    <span class="promo-overlay"></span><span class="promo-open"><i data-lucide="arrow-up-left"></i></span>
+                </a>
+                <a class="promo-banner promo-storage reveal" href="#categories" aria-label="آشنایی با تجهیزات ذخیره‌سازی در دسته‌بندی‌ها">
+                    <img src="{% static 'storefront/images/banners/promo-next-gen-storage.webp' %}" alt="بنر تصویری حافظه SSD نسل جدید" loading="lazy" width="1200" height="430">
+                    <span class="promo-overlay"></span><span class="promo-open"><i data-lucide="arrow-up-left"></i></span>
+                </a>
+            </div>
+        </section>
+
+        <section class="content-section why-section" id="about" aria-labelledby="why-title">
+            <div class="container why-layout">
+                <div class="why-copy reveal">
+                    <span class="section-kicker">WHY CHOOSE ARVOXGEAR</span>
+                    <h2 id="why-title">تجربه‌ای متفاوت از <span>دنیای تکنولوژی</span></h2>
+                    <p>انتخاب قطعه مناسب فقط خرید سخت‌افزار نیست؛ شروع ساخت تجربه‌ای است که با نیاز و سبک تو هماهنگ باشد. ArvoxGear برای همین مسیر ساخته شده است.</p>
+                    <div class="why-points">
+                        <div><i data-lucide="badge-check"></i><span><b>انتخاب آگاهانه</b><small>اطلاعات شفاف برای مقایسه بهتر</small></span></div>
+                        <div><i data-lucide="wrench"></i><span><b>نگاه تخصصی</b><small>تمرکز بر قطعات و تجهیزات حرفه‌ای</small></span></div>
+                        <div><i data-lucide="sparkles"></i><span><b>تجربه یکپارچه</b><small>از انتخاب قطعه تا ارتقای سیستم</small></span></div>
+                    </div>
+                </div>
+                <div class="why-visual reveal">
+                    <div class="why-image-frame"><img src="{% static 'storefront/images/banners/pc-builder-setup.webp' %}" alt="فضای گیمینگ با سیستم کامپیوتر نورپردازی‌شده" loading="lazy" width="900" height="550"></div>
+                    <div class="why-visual-caption"><span class="caption-mark">AG.</span><span><b>BUILT AROUND YOUR PASSION</b><small>Performance meets personality.</small></span></div>
+                    <span class="why-deco why-deco-one"></span><span class="why-deco why-deco-two"></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="builder-section content-section" id="builder" aria-labelledby="builder-title">
+            <div class="container">
+                <div class="builder-card reveal">
+                    <div class="builder-content"><span class="section-kicker">YOUR DREAM BUILD — COMING SOON</span><h2 id="builder-title">سیستم گیمینگ رؤیایی خودت را <span>بساز.</span></h2><p>قطعات موردنظرت را کنار هم قرار بده و برای ساخت سیستم ایده‌آلت آماده شو. ابزار PC Builder در نسخه‌های آینده ArvoxGear ارائه می‌شود.</p><span class="coming-soon"><i data-lucide="clock-3"></i> به‌زودی در ArvoxGear</span></div>
+                    <div class="builder-visual"><img src="{% static 'storefront/images/banners/pc-builder-setup.webp' %}" alt="نمایی از یک میزکار حرفه‌ای برای معرفی قابلیت آینده PC Builder" loading="lazy" width="900" height="550"><span class="builder-orbit"></span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter-section" aria-labelledby="newsletter-title">
+            <div class="container newsletter-inner reveal">
+                <div class="newsletter-copy"><span class="section-kicker">STAY IN THE LOOP</span><h2 id="newsletter-title">با ArvoxGear همیشه <span>به‌روز باش!</span></h2><p>از خبرها، به‌روزرسانی‌ها و برنامه‌های آینده ArvoxGear باخبر شو.</p></div>
+                <form class="newsletter-form" id="newsletter-form" novalidate>
+                    <label class="visually-hidden" for="newsletter-email">ایمیل شما</label>
+                    <div class="newsletter-input-wrap"><i data-lucide="mail"></i><input id="newsletter-email" type="email" placeholder="ایمیل خود را وارد کن..." required autocomplete="email"><button type="submit">عضویت <i data-lucide="arrow-up-left"></i></button></div>
+                    <small id="newsletter-message" role="status">این فرم در نسخه نمایشی به سرویس خبرنامه متصل نیست.</small>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="footer">
+        <div class="container footer-main">
+            <div class="footer-brand-col">
+                <a class="brand footer-brand" href="#top"><span class="brand-symbol"><i data-lucide="hexagon"></i><b>A</b></span><span class="brand-wordmark">Arvox<span>Gear</span><small>BUILD. PLAY. UPGRADE.</small></span></a>
+                <p>مقصدی برای عاشقان سخت‌افزار، بازی و تکنولوژی؛ جایی برای انتخاب قطعاتی که با جاه‌طلبی تو هماهنگ‌اند.</p>
+                <div class="social-links" aria-label="شبکه‌های اجتماعی">
+                    <a href="https://www.instagram.com/itsarvox/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                    <span class="social-link-disabled" title="پیوند تلگرام بعداً اضافه می‌شود" aria-label="Telegram - هنوز پیوندی ثبت نشده"><i data-lucide="send"></i></span>
+                    <span class="social-link-disabled" title="پیوند یوتیوب بعداً اضافه می‌شود" aria-label="YouTube - هنوز پیوندی ثبت نشده"><i data-lucide="youtube"></i></span>
+                    <a href="https://github.com/arvoxx" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i data-lucide="github"></i></a>
+                </div>
+            </div>
+            <div class="footer-links-col"><h3>لینک‌های مفید</h3><a href="#top">صفحه اصلی</a><a href="#categories">دسته‌بندی‌ها</a><a href="#promotions">پیشنهادهای ویژه</a><a href="#about">چرا ArvoxGear؟</a><a href="#builder">PC Builder</a><a href="#footer">ارتباط با ما</a></div>
+            <div class="footer-links-col"><h3>راهنمای مشتریان</h3><a href="#footer">سوالات متداول</a><a href="#footer">قوانین و مقررات</a><a href="#footer">حریم خصوصی</a><a href="#footer">راهنمای خرید</a></div>
+            <div class="footer-contact-col"><h3>راه‌های ارتباطی</h3><p><i data-lucide="mail"></i> آدرس ایمیل پس از راه‌اندازی فروشگاه ثبت می‌شود.</p><p><i data-lucide="map-pin"></i> اطلاعات نشانی و پشتیبانی به‌زودی اعلام می‌شود.</p><span class="contact-placeholder">اطلاعات تماس این بخش نمایشی است.</span></div>
+        </div>
+        <div class="container footer-bottom"><span>© <span id="current-year"></span> ArvoxGear. تمامی حقوق محفوظ است.</span><span class="footer-bottom-tag">ENGINEERED FOR YOUR NEXT LEVEL <i data-lucide="zap"></i></span></div>
+    </footer>
+
+
+    <button class="back-to-top" type="button" aria-label="بازگشت به بالا" id="back-to-top"><i data-lucide="arrow-up"></i></button>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+    <script src="{% static 'storefront/js/catalog.js' %}" defer></script>
+    <script src="{% static 'storefront/js/home.js' %}" defer></script>
+    <script src="{% static 'storefront/js/animations.js' %}" defer></script>
+</body>
+</html>
